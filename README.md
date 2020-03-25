@@ -15,4 +15,4 @@ In progress ...
  - start project `npm run start`
  - clean dist folder `npm run clean`
  - generate development files on dist folder `npm run dev`
- - generate production files on dist folder `npm run dev`
+ - generate production files on dist folder `npm run prod`
