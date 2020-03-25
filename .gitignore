@@ -1,0 +1,15 @@
+# Folders
+node_modules/
+dist/*
+
+# File types
+*.log
+*.lock
+
+# Exceptions
+!.gitkeep
+
+# OS generated files
+.DS_Store
+.DS_Store?
+Thumbs.db
