@@ -35,9 +35,9 @@ const output = {
 const devServer = {
     port: 8080,
     contentBase: path.join(__dirname, 'dist'),
-    open: 'Chrome',
-    writeToDisk: false,
-    hot: true
+    //open: 'Chrome',
+    //writeToDisk: false,
+    //hot: true
 }
 
 const _module = {
