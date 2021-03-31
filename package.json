@@ -7,7 +7,7 @@
     "dev": "npm run clean && webpack -d",
     "prod": "NODE_ENV=production && npm run clean && webpack -p",
     "start": "npm run dev && webpack-dev-server",
-    "setup": "yarn && npm run start",
+    "setup": "npm i && npm run start",
     "clean": "rimraf ./dist/*",
     "reinstall": "npm run clean && rm -rf node_modules && npm cache clean -f && npm run setup"
   },
