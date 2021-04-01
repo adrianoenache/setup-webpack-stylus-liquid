@@ -2,8 +2,7 @@
 In progress ...
 
 ## Require
- - [Node](https://nodejs.org/en/) and [npm](https://www.npmjs.com/get-npm)
- - [Yarn](https://classic.yarnpkg.com/lang/en/)
+ - [Node - 14.16.0](https://nodejs.org/en/) and [npm](https://www.npmjs.com/get-npm)
 
 ## If the system is Windows install inside
  - [WSL](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
