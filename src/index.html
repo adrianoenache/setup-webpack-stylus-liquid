@@ -6,7 +6,9 @@
 </head>
 <body>
 {% if dev_evn %}
-    <p>Section for development</p>
+    {% assign my_variable = 'Hello moto' %}
+    {% render 'components/test2', my_variable: my_variable %}
+    <p>Section for {{ dev_evn }} !!!</p>
     <hr>
     <h1>Stylus Desing Token</h1>
     <hr>

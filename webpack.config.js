@@ -9,14 +9,15 @@ const autoprefixer = require("autoprefixer");
 const cssnano = require("cssnano");
 
 // Plugins
-const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
+const { extendDefaultPlugins } = require("svgo");
 
-let $env = false;
+let $envProd = false;
 
-if (NODE_ENV == "production") {
-  $env = true;
+if (NODE_ENV === "production") {
+  $envProd = true;
 }
 
 //
@@ -34,50 +35,74 @@ const output = {
 };
 
 const devServer = {
-  port: 8080,
+  port: 4000,
   static: path.join(__dirname, "dist"),
   // open: 'Chrome',
-  // writeToDisk: false,
-  // hot: true
+  // writeToDisk: false
 };
 
 const _module = {
   rules: [
     // HTML
     {
-      test: /\.html$/,
+      test: /\.html|liquid$/i,
       use: [
         {
-          loader: "html-loader",
-        },
-        {
-          loader: "liquid-loader",
+          loader: "liquidjs-loader",
           options: {
+            extname: ".liquid",
             data: {
-              dev_evn: NODE_ENV == "development",
+              dev_evn: NODE_ENV,
             },
           },
+        },
+        {
+          loader: "html-loader",
         },
       ],
     },
     // Images
     {
       test: /\.(jpe?g|png|gif|svg)$/i,
-      use: [
-        {
-          loader: "file-loader", // Or `url-loader` or your other loader
-        },
-      ],
+      type: "asset",
     },
     // Stylus
     {
-      test: /\.styl$/,
+      test: /\.styl$/i,
       use: [
-        MiniCssExtractPlugin.loader,
-        "css-loader",
-        "postcss-loader",
-        "stylus-loader",
+        {
+          loader: MiniCssExtractPlugin.loader,
+        },
+        {
+          loader: "css-loader",
+          options: {
+            sourceMap: true,
+          },
+        },
+        {
+          loader: "postcss-loader",
+          options: {
+            sourceMap: true,
+          },
+        },
+        {
+          loader: "stylus-loader",
+          options: {
+            sourceMap: true,
+          },
+        },
       ],
+    },
+    // JS
+    {
+      test: /\.m?js$/,
+      exclude: /node_modules/,
+      use: {
+        loader: "babel-loader",
+        options: {
+          presets: ["@babel/preset-env"],
+        },
+      },
     },
   ],
 };
@@ -85,17 +110,17 @@ const _module = {
 const plugins = [
   new HtmlWebpackPlugin({
     minify: {
-      collapseWhitespace: $env,
+      collapseWhitespace: $envProd,
     },
-    hash: true,
+    hash: $envProd,
     excludeChunks: ["guideline"],
     template: __dirname + "/src/index.html",
   }),
   new HtmlWebpackPlugin({
     minify: {
-      collapseWhitespace: $env,
+      collapseWhitespace: $envProd,
     },
-    hash: true,
+    hash: $envProd,
     chunks: ["guideline"],
     filename: rootPath + "/guideline/" + "index.html",
     template: __dirname + "/src/guideline/index.html",
@@ -119,25 +144,21 @@ const plugins = [
       // Lossless optimization with custom option
       // Feel free to experiment with options for better result for you
       plugins: [
-        [
-          "svgo",
-          {
-            plugins: [
-              {
-                removeViewBox: false,
-              },
-            ],
-          },
-        ],
+        ["gifsicle", { interlaced: true }],
+        ["jpegtran", { progressive: true }],
+        ["optipng", { optimizationLevel: 5 }],
       ],
     },
   }),
   new webpack.HotModuleReplacementPlugin(),
-//   new webpack.NamedModulesPlugin(),
 ];
 
 module.exports = {
-  mode: 'development',
+  mode: NODE_ENV,
+  devtool: "inline-source-map",
+  stats: {
+    children: true,
+  },
   entry,
   devServer,
   output,
