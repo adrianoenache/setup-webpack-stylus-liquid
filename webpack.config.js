@@ -15,12 +15,14 @@ const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
 const { extendDefaultPlugins } = require("svgo");
 
 let $envProd = false;
+let $sourceMap = "source-map";
+let $buildFolder = "dist";
 
 if (NODE_ENV === "production") {
   $envProd = true;
+  $sourceMap = false;
+  $buildFolder = "prod";
 }
-
-//
 
 const entry = {
   app: "./src/assets/js/app.js",
@@ -29,14 +31,14 @@ const entry = {
 
 const output = {
   filename: "assets/js/[name].js",
-  path: path.resolve(__dirname, "dist"),
+  path: path.resolve(__dirname, $buildFolder),
   libraryTarget: "umd",
   library: "app",
 };
 
 const devServer = {
   port: 4000,
-  static: path.join(__dirname, "dist"),
+  static: path.join(__dirname, $buildFolder),
   // open: 'Chrome',
   // writeToDisk: false
 };
@@ -93,15 +95,24 @@ const _module = {
         },
       ],
     },
+    // Critical CSS
+    {
+      test: /\.css$/i,
+      use: [
+        {
+          loader: "style-loader",
+        },
+        {
+          loader: "css-loader",
+        },
+      ],
+    },
     // JS
     {
       test: /\.m?js$/,
       exclude: /node_modules/,
       use: {
         loader: "babel-loader",
-        options: {
-          presets: ["@babel/preset-env"],
-        },
       },
     },
   ],
@@ -113,7 +124,9 @@ const plugins = [
       collapseWhitespace: $envProd,
     },
     hash: $envProd,
-    excludeChunks: ["guideline"],
+    chunks: ["app"],
+    filename: "index.html",
+    inject: "body",
     template: __dirname + "/src/index.html",
   }),
   new HtmlWebpackPlugin({
@@ -123,6 +136,7 @@ const plugins = [
     hash: $envProd,
     chunks: ["guideline"],
     filename: rootPath + "/guideline/" + "index.html",
+    inject: "body",
     template: __dirname + "/src/guideline/index.html",
   }),
   new MiniCssExtractPlugin({
@@ -155,9 +169,14 @@ const plugins = [
 
 module.exports = {
   mode: NODE_ENV,
-  devtool: "inline-source-map",
+  devtool: $sourceMap,
   stats: {
     children: true,
+  },
+  optimization: {
+    splitChunks: {
+      chunks: "all",
+    },
   },
   entry,
   devServer,

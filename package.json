@@ -5,6 +5,7 @@
   "main": "webpack.config.js",
   "scripts": {
     "cleanDistFolder": "rimraf ./dist/*",
+    "cleanProdFolder": "rimraf ./prod/*",
     "uninstall": "npm run cleanDistFolder && npm run removeNode",
     "reinstall": "npm run cleanDistFolder && npm run removeNode && npm run setup",
     "setup": "npm i && npm run start",
@@ -12,7 +13,7 @@
     "buildDev": "webpack --node-env=development",
     "buildProd": "webpack --node-env=production",
     "dev": "npm run cleanDistFolder && npm run buildDev && webpack-dev-server --open",
-    "prod": "npm run cleanDistFolder && npm run buildProd",
+    "prod": "npm run cleanProdFolder && npm run buildProd",
     "start": "npm run dev"
   },
   "author": "Adriano Enache",
@@ -34,7 +35,7 @@
     "imagemin-jpegtran": "^7.0.0",
     "imagemin-optipng": "^8.0.0",
     "imagemin-svgo": "^10.0.0",
-    "liquidjs": "^9.28.2",
+    "liquidjs": "^9.28.3",
     "liquidjs-loader": "^1.0.1",
     "mini-css-extract-plugin": "^2.4.3",
     "path": "^0.12.7",
