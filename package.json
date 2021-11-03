@@ -33,6 +33,7 @@
     "liquidjs": "^9.28.3",
     "liquidjs-loader": "^1.0.1",
     "mini-css-extract-plugin": "^2.4.3",
+    "mini-svg-data-uri": "^1.4.3",
     "path": "^0.12.7",
     "postcss-loader": "^6.2.0",
     "purgecss": "^4.0.3",

@@ -7,6 +7,7 @@ const path = require("path");
 const webpack = require("webpack");
 const autoprefixer = require("autoprefixer");
 const cssnano = require("cssnano");
+const svgToMiniDataURI = require('mini-svg-data-uri');
 
 // Plugins
 const HtmlWebpackPlugin = require("html-webpack-plugin");
@@ -61,11 +62,21 @@ const _module = {
     },
     // Images
     {
-      test: /\.(jpe?g|png|gif|svg)$/i,
+      test: /\.(jpe?g|png|gif)$/i,
       type: "asset/resource",
       generator: {
         filename: "./assets/img/[name]-[hash:6][ext][query]",
-      }
+      },
+    },
+    {
+      test: /\.(svg)$/i,
+      type: "asset/inline",
+      generator: {
+        dataUrl: (content) => {
+          content = content.toString();
+          return svgToMiniDataURI(content);
+        },
+      },
     },
     // Fonts
     {
@@ -73,7 +84,7 @@ const _module = {
       type: "asset/resource",
       generator: {
         filename: "./assets/fonts/[name]-[hash:6][ext][query]",
-      }
+      },
     },
     // Stylus
     {
