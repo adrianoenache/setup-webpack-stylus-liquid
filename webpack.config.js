@@ -11,7 +11,6 @@ const cssnano = require("cssnano");
 // Plugins
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
 
 let $envProd = false;
 let $sourceMap = "source-map";
@@ -31,8 +30,6 @@ const entry = {
 const output = {
   filename: "assets/js/[name]-[contenthash:6].js",
   path: path.resolve(__dirname, $buildFolder),
-  libraryTarget: "umd",
-  library: "app",
 };
 
 const devServer = {
@@ -49,6 +46,9 @@ const _module = {
       test: /\.html|liquid$/i,
       use: [
         {
+          loader: "html-loader",
+        },
+        {
           loader: "liquidjs-loader",
           options: {
             extname: ".liquid",
@@ -57,15 +57,23 @@ const _module = {
             },
           },
         },
-        {
-          loader: "html-loader",
-        },
       ],
     },
     // Images
     {
       test: /\.(jpe?g|png|gif|svg)$/i,
-      type: "asset",
+      type: "asset/resource",
+      generator: {
+        filename: "./assets/img/[name]-[hash:6][ext][query]",
+      }
+    },
+    // Fonts
+    {
+      test: /\.(woff?2|eot|ttf|otf)$/i,
+      type: "asset/resource",
+      generator: {
+        filename: "./assets/fonts/[name]-[hash:6][ext][query]",
+      }
     },
     // Stylus
     {
@@ -152,18 +160,6 @@ const plugins = [
       ],
     },
   }),
-  new ImageMinimizerPlugin({
-    minimizerOptions: {
-      // Lossless optimization with custom option
-      // Feel free to experiment with options for better result for you
-      plugins: [
-        ["gifsicle", { interlaced: true }],
-        ["jpegtran", { progressive: true }],
-        ["optipng", { optimizationLevel: 5 }],
-      ],
-    },
-  }),
-  new webpack.HotModuleReplacementPlugin(),
 ];
 
 module.exports = {
