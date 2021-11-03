@@ -12,7 +12,6 @@ const cssnano = require("cssnano");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
-const { extendDefaultPlugins } = require("svgo");
 
 let $envProd = false;
 let $sourceMap = "source-map";
@@ -30,7 +29,7 @@ const entry = {
 };
 
 const output = {
-  filename: "assets/js/[name].js",
+  filename: "assets/js/[name]-[contenthash:6].js",
   path: path.resolve(__dirname, $buildFolder),
   libraryTarget: "umd",
   library: "app",
@@ -140,8 +139,8 @@ const plugins = [
     template: __dirname + "/src/guideline/index.html",
   }),
   new MiniCssExtractPlugin({
-    filename: rootPath + "/assets/css/[name].css",
-    chunkFilename: rootPath + "/assets/css/[id].css",
+    filename: rootPath + "/assets/css/[name]-[contenthash:6].css",
+    chunkFilename: rootPath + "/assets/css/[id]-[contenthash:6].css",
   }),
   new webpack.LoaderOptionsPlugin({
     options: {
