@@ -66,7 +66,14 @@ const _module = {
       test: /\.(jpe?g|png|gif)$/i,
       type: "asset/resource",
       generator: {
-        filename: "./assets/img/[name]-[hash:6][ext][query]",
+        filename: "./assets/img/[name]-[hash:6][ext]",
+      },
+    },
+    {
+      test: /\.(ico)$/i,
+      type: "asset/resource",
+      generator: {
+        filename: "./assets/favicon/[name]-[hash:6][ext]",
       },
     },
     {
@@ -84,7 +91,7 @@ const _module = {
       test: /\.(woff?2|eot|ttf|otf)$/i,
       type: "asset/resource",
       generator: {
-        filename: "./assets/fonts/[name]-[hash:6][ext][query]",
+        filename: "./assets/fonts/[name]-[hash:6][ext]",
       },
     },
     // Stylus

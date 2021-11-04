@@ -5,7 +5,7 @@
 <title>webpack-101</title>
 </head>
 <body>
-{% if dev_evn %}
+{% if dev_evn == "development" %}
     {% assign my_variable = 'Hello moto' %}
     {% render 'components/test2', my_variable: my_variable %}
     <p>Section for {{ dev_evn }} !!!</p>
