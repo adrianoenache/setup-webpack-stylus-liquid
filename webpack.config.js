@@ -2,6 +2,9 @@
 const NODE_ENV = process.env.NODE_ENV || "development";
 const rootPath = ".";
 
+console.log("#### process.env.NODE_ENV =", process.env.NODE_ENV);
+console.log("#### NODE_ENV =", NODE_ENV);
+
 // Commons
 const path = require("path");
 const webpack = require("webpack");
@@ -34,8 +37,8 @@ const output = {
 };
 
 const devServer = {
-  port: 4000,
   compress: true,
+  port: 4000,
 };
 
 const _module = {

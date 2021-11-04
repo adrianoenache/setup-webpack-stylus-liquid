@@ -12,9 +12,12 @@
     "removeNode": "rm -rf node_modules && npm cache clean -f",
     "buildDev": "webpack --node-env=development",
     "buildProd": "webpack --node-env=production",
-    "dev": "npm run cleanDistFolder && npm run buildDev && webpack-dev-server --open",
+    "dev": "npm run cleanDistFolder && npm run buildDev",
     "prod": "npm run cleanProdFolder && npm run buildProd",
-    "start": "npm run dev"
+    "openServerDev": "webpack-dev-server --node-env=development --open",
+    "openServerProd": "webpack-dev-server --node-env=production --open",
+    "startDev": "npm run dev && npm run openServerDev",
+    "startProd": "npm run prod && npm run openServerProd"
   },
   "author": "Adriano Enache",
   "license": "MIT",
