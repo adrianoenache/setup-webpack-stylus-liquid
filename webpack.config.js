@@ -35,9 +35,7 @@ const output = {
 
 const devServer = {
   port: 4000,
-  static: path.join(__dirname, $buildFolder),
-  // open: 'Chrome',
-  // writeToDisk: false
+  compress: true,
 };
 
 const _module = {
