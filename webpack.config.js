@@ -2,8 +2,8 @@
 const NODE_ENV = process.env.NODE_ENV || "development";
 const rootPath = ".";
 
-console.log("#### process.env.NODE_ENV =", process.env.NODE_ENV);
-console.log("#### NODE_ENV =", NODE_ENV);
+console.log("#### process.env.NODE_ENV = ", process.env.NODE_ENV);
+console.log("#### NODE_ENV = ", NODE_ENV);
 
 // Commons
 const path = require("path");
@@ -25,6 +25,20 @@ if (NODE_ENV === "production") {
   $sourceMap = false;
   $buildFolder = "prod";
 }
+
+const mode = NODE_ENV;
+
+const devtool = $sourceMap;
+
+const stats = {
+  children: true,
+};
+
+const optimization = {
+  splitChunks: {
+    chunks: "all",
+  },
+};
 
 const entry = {
   app: "./src/assets/js/app.js",
@@ -182,16 +196,10 @@ const plugins = [
 ];
 
 module.exports = {
-  mode: NODE_ENV,
-  devtool: $sourceMap,
-  stats: {
-    children: true,
-  },
-  optimization: {
-    splitChunks: {
-      chunks: "all",
-    },
-  },
+  mode,
+  devtool,
+  stats,
+  optimization,
   entry,
   devServer,
   output,

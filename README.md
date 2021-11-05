@@ -9,12 +9,20 @@ In progress ...
  - or [WSL2](https://docs.microsoft.com/en-us/windows/wsl/wsl2-install)
 
 ## Comands
- - install `npm run setup`
- - reinstall `npm run reinstall`
- - start project `npm run start`
- - clean dist folder `npm run clean`
- - generate development files on dist folder `npm run dev`
- - generate production files on dist folder `npm run prod`
+  - npm run install
+  - npm run startDev
+  - npm run startProd
+  - npm run cleanDistFolder
+  - npm run cleanProdFolder
+  - npm run removeNode
+  - npm run uninstall
+  - npm run reinstallinstall",
+  - npm run dev
+  - npm run prod
+  - npm run buildDev
+  - npm run buildProd
+  - npm run openServerDev
+  - npm run openServerProd
 
 ## NPM
   - autoprefixer [10.3.7](https://www.npmjs.com/package/autoprefixer)
