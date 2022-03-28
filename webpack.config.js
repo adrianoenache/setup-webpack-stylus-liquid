@@ -18,7 +18,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 let $envProd = false;
 let $sourceMap = "source-map";
-let $buildFolder = "dist";
+let $buildFolder = "dev";
 
 if (NODE_ENV === "production") {
   $envProd = true;
@@ -144,6 +144,12 @@ const _module = {
         },
         {
           loader: "css-loader",
+        },
+        {
+          loader: "postcss-loader",
+          options: {
+            sourceMap: true,
+          },
         },
       ],
     },
