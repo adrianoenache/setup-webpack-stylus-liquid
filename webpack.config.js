@@ -41,8 +41,8 @@ const optimization = {
 };
 
 const entry = {
-  app: "./src/assets/js/app.js",
-  guideline: "./src/assets/js/guideline.js",
+  main: "./src/assets/js/app/main.js",
+  guideline: "./src/assets/js/app/guideline.js",
 };
 
 const output = {
@@ -170,7 +170,7 @@ const plugins = [
       collapseWhitespace: $envProd,
     },
     hash: $envProd,
-    chunks: ["app"],
+    chunks: ["main"],
     filename: "index.html",
     inject: "body",
     template: __dirname + "/src/index.html",
