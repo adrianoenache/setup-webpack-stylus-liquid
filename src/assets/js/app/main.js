@@ -1,2 +1,2 @@
-import '../../styl/main.styl';
+import '../../styl/output/main.styl';
 console.log("### index");
