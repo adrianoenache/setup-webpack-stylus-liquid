@@ -2,6 +2,13 @@
   "name": "setup-webpack-stylus-liquid",
   "version": "1.0.0",
   "description": "setup-webpack-stylus-liquid",
+  "homepage": "https://adrianoenache.dev.br/",
+  "author": {
+    "name": "Adriano Enache",
+    "email": "adrianoenache@hotmail.com",
+    "url": "https://adrianoenache.dev.br/"
+  },
+  "license": "MIT",
   "main": "webpack.config.js",
   "scripts": {
     "install": "npm i",
@@ -20,8 +27,6 @@
     "openServerDev": "webpack-dev-server --node-env=development --open",
     "openServerProd": "webpack-dev-server --node-env=production --open"
   },
-  "author": "Adriano Enache",
-  "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.17.9",
     "@babel/preset-env": "^7.16.11",
