@@ -8,6 +8,10 @@
     "email": "adrianoenache@hotmail.com",
     "url": "https://adrianoenache.dev.br/"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adrianoenache/setup-webpack-stylus-liquid.git"
+  },
   "license": "MIT",
   "main": "webpack.config.js",
   "scripts": {
