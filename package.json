@@ -26,10 +26,10 @@
     "reinstall": "npm run uninstall && npm run install",
     "dev": "npm run cleanDevFolder && npm run buildDev",
     "prod": "npm run cleanProdFolder && npm run buildProd",
-    "buildDev": "webpack --node-env=development",
-    "buildProd": "webpack --node-env=production",
-    "openServerDev": "webpack-dev-server --node-env=development --open",
-    "openServerProd": "webpack-dev-server --node-env=production --open"
+    "buildDev": "webpack --node-env=development --progress",
+    "buildProd": "webpack --node-env=production --progress",
+    "openServerDev": "webpack-dev-server --node-env=development --progress --open",
+    "openServerProd": "webpack-dev-server --node-env=production --progress --open"
   },
   "devDependencies": {
     "@babel/core": "^7.17.9",
