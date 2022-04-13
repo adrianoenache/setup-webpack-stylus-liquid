@@ -55,6 +55,14 @@ const devServer = {
   port: 4000,
 };
 
+const watchOptions = {
+  aggregateTimeout: 300,
+  followSymlinks: true,
+  ignored: /node_modules/,
+  poll: 1000,
+  stdin: true,
+};
+
 const _module = {
   rules: [
     // HTML
@@ -208,6 +216,7 @@ module.exports = {
   optimization,
   entry,
   devServer,
+  watchOptions,
   output,
   module: _module,
   plugins,
