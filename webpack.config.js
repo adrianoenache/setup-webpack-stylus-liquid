@@ -53,6 +53,7 @@ const output = {
 const devServer = {
   compress: true,
   port: 4000,
+  static: `${rootPath}/${$buildFolder}`,
 };
 
 const watchOptions = {
