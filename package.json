@@ -8,6 +8,10 @@
     "email": "adrianoenache@hotmail.com",
     "url": "https://adrianoenache.dev.br/"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adrianoenache/setup-webpack-stylus-liquid.git"
+  },
   "license": "MIT",
   "main": "webpack.config.js",
   "scripts": {
@@ -22,10 +26,10 @@
     "reinstall": "npm run uninstall && npm run install",
     "dev": "npm run cleanDevFolder && npm run buildDev",
     "prod": "npm run cleanProdFolder && npm run buildProd",
-    "buildDev": "webpack --node-env=development",
-    "buildProd": "webpack --node-env=production",
-    "openServerDev": "webpack-dev-server --node-env=development --open",
-    "openServerProd": "webpack-dev-server --node-env=production --open"
+    "buildDev": "webpack --node-env=development --progress",
+    "buildProd": "webpack --node-env=production --progress",
+    "openServerDev": "webpack-dev-server --node-env=development --progress --open",
+    "openServerProd": "webpack-dev-server --node-env=production --progress --open"
   },
   "devDependencies": {
     "@babel/core": "^7.17.9",
@@ -39,7 +43,7 @@
     "glob": "^8.0.1",
     "html-loader": "^3.1.0",
     "html-webpack-plugin": "^5.5.0",
-    "liquidjs": "^9.36.0",
+    "liquidjs": "^9.36.1",
     "liquidjs-loader": "^1.0.1",
     "mini-css-extract-plugin": "^2.6.0",
     "mini-svg-data-uri": "^1.4.4",

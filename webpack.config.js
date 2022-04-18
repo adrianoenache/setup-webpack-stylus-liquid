@@ -53,6 +53,15 @@ const output = {
 const devServer = {
   compress: true,
   port: 4000,
+  static: `${rootPath}/${$buildFolder}`,
+};
+
+const watchOptions = {
+  aggregateTimeout: 300,
+  followSymlinks: true,
+  ignored: /node_modules/,
+  poll: 1000,
+  stdin: true,
 };
 
 const _module = {
@@ -208,6 +217,7 @@ module.exports = {
   optimization,
   entry,
   devServer,
+  watchOptions,
   output,
   module: _module,
   plugins,
