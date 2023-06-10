@@ -1,2 +1,2 @@
-import '../../styl/output/main.styl';
-console.log("### index");
+import '../../styl/output/main.styl'
+console.log('### index')
