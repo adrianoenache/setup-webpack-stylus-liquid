@@ -1,0 +1,24 @@
+{
+  "reporter": "raw",
+  "watch": false,
+  "rules": {
+    "color": false,
+    "colons": [
+      "always"
+    ],
+    "depthControl": {
+      "indentPref": 4
+    }
+  },
+  "path": "./src/assets/styl",
+  "excludes": [
+    "node_modules/"
+  ],
+  "stylusParserOptions": {},
+  "reportOptions": {
+    "columnSplitter": " | ",
+    "maxWidth": 70,
+    "minWidth": 70,
+    "truncate": false
+  }
+}
