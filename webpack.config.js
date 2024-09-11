@@ -209,7 +209,11 @@ const plugins = [
       ],
     },
   }),
-  new ESLintPlugin(),
+  new ESLintPlugin({
+    cache: true,
+    configType: 'flat',
+    exclude: 'node_modules'
+  }),
 ];
 
 module.exports = {

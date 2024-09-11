@@ -4,7 +4,7 @@
   "rules": {
     "color": false,
     "colons": [
-      "always"
+      "none"
     ],
     "depthControl": {
       "indentPref": 4
