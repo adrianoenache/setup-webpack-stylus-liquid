@@ -1,2 +1,2 @@
-import '../../styl/guideline/gd.styl';
-console.log("### Guideline");
+import '../../styl/guideline/gd.styl'
+console.log('### Guideline')

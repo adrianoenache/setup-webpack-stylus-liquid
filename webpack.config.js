@@ -15,6 +15,7 @@ const svgToMiniDataURI = require('mini-svg-data-uri');
 // Plugins
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const ESLintPlugin = require('eslint-webpack-plugin');
 
 let $envProd = false;
 let $sourceMap = 'source-map';
@@ -207,6 +208,11 @@ const plugins = [
         }),
       ],
     },
+  }),
+  new ESLintPlugin({
+    cache: true,
+    configType: 'flat',
+    exclude: 'node_modules'
   }),
 ];
 
