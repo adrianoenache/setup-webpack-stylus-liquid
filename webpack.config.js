@@ -20,11 +20,15 @@ const ESLintPlugin = require('eslint-webpack-plugin');
 let $envProd = false;
 let $sourceMap = 'source-map';
 let $buildFolder = 'dev';
+let $compress = false;
+let $port = 4000;
 
 if (NODE_ENV === 'production') {
   $envProd = true;
   $sourceMap = false;
   $buildFolder = 'prod';
+	$compress = true;
+	$port = 4001;
 }
 
 const mode = NODE_ENV;
@@ -52,8 +56,8 @@ const output = {
 };
 
 const devServer = {
-  compress: true,
-  port: 4000,
+  compress: $compress,
+  port: $port,
   static: `${rootPath}/${$buildFolder}`,
 };
 
