@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt_br">
+<html lang="pt-br">
 <head>
 <meta charset="utf-8">
 <title>webpack-101</title>
@@ -8,50 +8,13 @@
 {% if dev_evn == "development" %}
     {% assign my_variable = 'Hello moto' %}
     {% render 'components/test2', my_variable: my_variable %}
+    {% assign my_variable = test.version %}
+    {% render 'components/test2', my_variable: my_variable %}
+    {% assign my_variable = test.name %}
+    {% render 'components/test2', my_variable: my_variable %}
+    {% assign my_variable = config.theme %}
+    {% render 'components/test2', my_variable: my_variable %}
     <p>Section for {{ dev_evn }} !!!</p>
-    <img src="assets/img/on-fire.png" alt="xpto">
-    <img src="assets/img/ae.svg" alt="xpto">
-    <hr>
-    <h1>Stylus Desing Token</h1>
-    <hr>
-    <h2>Button example &lt;a&gt;</h2>
-    <a class="reset btn button" href="#">Class = button</a>
-    <a class="reset btn-pill cta" href="#">Class = cta</a>
-    <a class="reset btn-square button" href="#">X</a>
-    <a class="reset btn-bullet cta" href="#">X</a>
-    <h2>Button example &lt;button&gt;</h2>
-    <button class="btn button" type="button">Class = button</button>
-    <button class="btn-pill cta" type="button">Class = cta</button>
-    <button class="btn-square button" type="button">X</button>
-    <button class="btn-bullet cta" type="button">X</button>
-    <hr>
-    <h2>Hero type 01</h2>
-    <div class="hero type-01">
-        <figure>
-            <picture>
-                <source srcset="https://images.pexels.com/photos/949587/pexels-photo-949587.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=414" media="(max-width: 414px)">
-                <source srcset="https://images.pexels.com/photos/949587/pexels-photo-949587.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=1024" media="(min-width: 414px) and (max-width: 1024px)">
-                <source srcset="https://images.pexels.com/photos/949587/pexels-photo-949587.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=1440" media="(min-width: 1024px) and (max-width: 1440px)">
-                <source srcset="https://images.pexels.com/photos/949587/pexels-photo-949587.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=1920" media="(min-width: 1440px)">
-                <img src="https://images.pexels.com/photos/949587/pexels-photo-949587.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=414" alt="www.pexels.com" title="www.pexels.com">
-            </picture>
-        </figure>
-        <div class="text-content">
-            <h1>Lorem, ipsum dolor sit amet consectetur adipisicing elit</h1>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quis officia impedit laboriosam nemo deserunt alias, adipisci necessitatibus magni ab blanditiis nobis, ea amet, delectus reiciendis voluptatem.</p>
-            <p>
-                <a class="reset btn button" href="#">Lorem ipsum dolor</a>
-            </p>
-        </div>
-    </div>
-    <hr>
-    <div class="holder">
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eum repellendus autem nobis quod, aperiam vel laudantium exercitationem, error quasi reiciendis quaerat doloribus dicta blanditiis! Est tempore libero saepe fuga tenetur?</p>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eum repellendus autem nobis quod, aperiam vel laudantium exercitationem, error quasi reiciendis quaerat doloribus dicta blanditiis! Est tempore libero saepe fuga tenetur? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eum repellendus autem nobis quod, aperiam vel laudantium exercitationem, error quasi reiciendis quaerat doloribus dicta blanditiis! Est tempore libero saepe fuga tenetur?</p>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eum repellendus autem nobis quod, aperiam vel laudantium exercitationem, error quasi reiciendis quaerat doloribus dicta blanditiis! Est tempore libero saepe fuga tenetur?</p>	<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eum repellendus autem nobis quod, aperiam vel laudantium exercitationem, error quasi reiciendis quaerat doloribus dicta blanditiis! Est tempore libero saepe fuga tenetur? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eum repellendus autem nobis quod, aperiam vel laudantium exercitationem, error quasi reiciendis quaerat doloribus dicta blanditiis! Est tempore libero saepe fuga tenetur?</p>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eum repellendus autem nobis quod, aperiam vel laudantium exercitationem, error quasi reiciendis quaerat doloribus dicta blanditiis! Est tempore libero saepe fuga tenetur?</p>
-    </div>
-    <hr>
 {% else %}
     <p>Section for production</p>
 {% endif %}

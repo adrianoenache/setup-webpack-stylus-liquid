@@ -6,6 +6,7 @@ console.log('#### process.env.NODE_ENV = ', process.env.NODE_ENV);
 console.log('#### NODE_ENV = ', NODE_ENV);
 
 // Commons
+const fs = require('fs');
 const path = require('path');
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
@@ -22,6 +23,29 @@ let $sourceMap = 'source-map';
 let $buildFolder = 'dev';
 let $compress = false;
 let $port = 4000;
+
+// Caminho para a pasta de dados
+const dataDir = path.resolve(__dirname, 'src/data');
+
+// Função para carregar todos os arquivos JSON da pasta
+const loadJsonFiles = (dir) => {
+  const files = fs.readdirSync(dir);
+  const data = {};
+
+  files.forEach((file) => {
+    if (file.endsWith('.json')) {
+      const filePath = path.join(dir, file);
+      const fileData = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+      const fileName = path.basename(file, '.json'); // Nome do arquivo sem extensão
+      data[fileName] = fileData; // Adiciona os dados ao objeto com o nome do arquivo como chave
+    }
+  });
+
+  return data;
+};
+
+// Carregar todos os arquivos JSON
+const jsonData = loadJsonFiles(dataDir);
 
 if (NODE_ENV === 'production') {
   $envProd = true;
@@ -84,6 +108,7 @@ const _module = {
             extname: '.liquid',
             data: {
               dev_evn: NODE_ENV,
+							...jsonData,
             },
           },
         },
@@ -168,6 +193,19 @@ const _module = {
       ],
     },
     // JS
+		{
+			test: /\.m?js$/,
+			type: 'javascript/auto',
+			resolve: {
+				fullySpecified: false,
+			},
+		},
+		// Json
+		{
+			test: /\.json$/,
+			type: 'json'
+		},
+		// Babel
     {
       test: /\.m?js$/,
       exclude: /node_modules/,
