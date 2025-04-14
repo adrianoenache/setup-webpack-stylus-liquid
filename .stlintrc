@@ -2,23 +2,41 @@
   "reporter": "raw",
   "watch": false,
   "rules": {
-    "color": false,
-    "colons": [
-      "none"
-    ],
-    "depthControl": {
-      "indentPref": 4
-    }
+      "brackets": ["never"],
+      "colons": ["never"],
+      "color": {
+      "conf": "lowecase",
+      "enabled": true,
+      "allowOnlyInVar": false,
+      "allowShortcut": true,
+      "denyRGB": false
+      },
+      "commaInObject": ["never"],
+      "depthControl": {
+      "indentPref": 1
+      },
+      "emptyLines": true,
+      "leadingZero": ["never"],
+      "mixedSpaces": {
+      "indentPref": "tab"
+      },
+      "prefixVarsWithDollar": {
+      "conf": "never"
+      },
+      "quotePref": ["double"],
+      "semicolons": ["never"],
+      "sortOrder": "alphabetical",
+      "useMixinInsteadUnit": {
+      "conf": "never"
+      }
   },
-  "path": "./src/assets/styl",
-  "excludes": [
-    "node_modules/"
-  ],
+  "path": "./app/static/stylus/src/",
+  "excludes": ["node_modules/"],
   "stylusParserOptions": {},
   "reportOptions": {
-    "columnSplitter": " | ",
-    "maxWidth": 70,
-    "minWidth": 70,
-    "truncate": false
+      "columnSplitter": " | ",
+      "maxWidth": 70,
+      "minWidth": 70,
+      "truncate": false
   }
 }
