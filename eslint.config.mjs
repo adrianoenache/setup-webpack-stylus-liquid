@@ -81,7 +81,7 @@ export default [
       'max-lines': 'error',
       'max-lines-per-function': 'off',
       'max-nested-callbacks': 'error',
-      'max-params': 'error',
+      'max-params': ["error", 5],
       'max-statements': 'off',
       'max-statements-per-line': 'off',
       'multiline-comment-style': ['error', 'starred-block'],
