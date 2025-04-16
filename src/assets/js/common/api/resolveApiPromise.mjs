@@ -4,17 +4,17 @@ function resolveApiPromise(apiPromise, doThisActionOnSuccess, errorMessage = 'Er
 
     if(!data) {
 
-      console.warn(errorMessage);
+      console.warn(errorMessage)
 
-      if(typeof (doThisActionOnFail) == 'function') doThisActionOnFail();
+      if(typeof (doThisActionOnFail) == 'function') doThisActionOnFail()
 
-      return;
+      return
 
     }
 
-    doThisActionOnSuccess(data);
+    doThisActionOnSuccess(data)
 
-  });
+  })
 
 }
 
