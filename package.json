@@ -15,8 +15,8 @@
   "license": "MIT",
   "main": "webpack.config.js",
   "engines": {
-    "node": ">=22.11.0",
-    "npm": ">=10.9.0"
+    "node": ">=24.14.0",
+    "npm": ">=11.9.0"
   },
   "scripts": {
     "setup": "npm i && npm run huskyInstall && npm audit fix && npm outdated",
